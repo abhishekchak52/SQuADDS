@@ -1,13 +1,12 @@
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+
 
 [project]
 name = "SQuADDS"
-dynamic = ["version"]
+version = '0.3.7'
 description = "Our project introduces an open-source database of programmatically generated and experimentally validated superconducting quantum device designs, accessible through a user-friendly interface, significantly lowering the entry barrier for research in this field."
 readme = "README.md"
-license = {file = "LICENSE"}
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [
     {name = "Sadman Ahmed Shanto", email = "shanto@usc.edu"},
 ]
@@ -20,7 +19,7 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering :: Physics",
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.11,<3.13"
 dependencies = [
     "datasets==2.19.2",
     "huggingface_hub==0.21.4",
@@ -44,11 +43,31 @@ dependencies = [
     "plotly",
 ]
 
+[build-system]
+    requires      = [ "uv_build>=0.9.17,<0.10.0" ]
+    build-backend = "uv_build"
+
+# Accounting for flat layout
+[tool.uv.build-backend]
+    module-name = "squadds"
+    module-root = ""
+
+
+[project.urls]
+Homepage = "https://github.com/LFL-Lab/SQuADDS"
+Repository = "https://github.com/LFL-Lab/SQuADDS"
+Documentation = "https://lfl-lab.github.io/SQuADDS/"
+"Bug Tracker" = "https://github.com/LFL-Lab/SQuADDS/issues"
+"Research Paper" = "https://quantum-journal.org/papers/q-2024-09-09-1465/"
+"Hugging Face" = "https://huggingface.co/datasets/SQuADDS/SQuADDS_DB"
+
+
 [project.optional-dependencies]
 optional = [
     "klayout==0.29.10",
     "gdspy>=1.6.12",
 ]
+# Retained for backwards compatibility. To be removed in the future.
 all = [
     # Core dependencies are automatically included
     "dask==2024.6.2",
@@ -76,27 +95,3 @@ all = [
     "klayout==0.29.10",
     "gdspy>=1.6.12",
 ]
-
-[project.urls]
-Homepage = "https://github.com/LFL-Lab/SQuADDS"
-Repository = "https://github.com/LFL-Lab/SQuADDS"
-Documentation = "https://lfl-lab.github.io/SQuADDS/"
-"Bug Tracker" = "https://github.com/LFL-Lab/SQuADDS/issues"
-"Research Paper" = "https://quantum-journal.org/papers/q-2024-09-09-1465/"
-"Hugging Face" = "https://huggingface.co/datasets/SQuADDS/SQuADDS_DB"
-
-[tool.hatch.build.targets.wheel]
-packages = ["squadds"]
-
-[tool.hatch.build.targets.sdist]
-include = [
-    "/squadds",
-    "/README.md",
-    "/LICENSE",
-    "/requirements-core.txt",
-    "/requirements-optional.txt",
-    "/requirements.txt",
-]
-
-[tool.hatch.version]
-path = "squadds/__init__.py" 

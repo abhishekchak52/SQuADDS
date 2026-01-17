@@ -55,7 +55,7 @@ jobs:
         shell: bash
 
       - name: Run import tests
-        run: uv run python tests/imports_test.py
+        run: uv run pytest tests/imports_test.py
 
       - name: Run MVP tests
         run: uv run python tests/mvp_test.py

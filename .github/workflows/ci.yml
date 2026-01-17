@@ -52,7 +52,7 @@ jobs:
           uv run python -c "import squadds; print(squadds.__version__)"
 
       - name: Test Python Imports
-        run: uv run python tests/imports_test.py
+        run: uv run --extra dev pytest tests/imports_test.py
 
       - name: Install Pandoc v 2.18
         run: |

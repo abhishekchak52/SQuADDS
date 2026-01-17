@@ -7,7 +7,7 @@ from datetime import datetime
 from datasets import get_dataset_config_names, load_dataset
 from dotenv import load_dotenv
 
-from squadds.core.globals import *
+from squadds.core.globals import ENV_FILE_PATH
 from squadds.core.utils import (
     compare_schemas,
     delete_HF_cache,
@@ -439,7 +439,7 @@ class ExistingConfigData:
                 if isinstance(dict1[key], dict) and isinstance(dict2[key], dict):
                     yield from find_common_keys(dict1[key], dict2[key], new_path)
                 else:
-                    if type(dict1[key]) != type(dict2[key]):
+                    if type(dict1[key]) is not type(dict2[key]):
                         yield new_path, False
                     else:
                         yield new_path, True

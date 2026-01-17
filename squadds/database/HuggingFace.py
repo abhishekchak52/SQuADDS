@@ -4,7 +4,7 @@ from datasets import Dataset, concatenate_datasets, load_dataset
 from dotenv import load_dotenv
 from huggingface_hub import HfApi, login
 
-from squadds.core.globals import *
+from squadds.core.globals import ENV_FILE_PATH
 
 
 def fork_dataset(repo_id: str, dataset_name: str, new_dataset_name: str, private: bool = True):

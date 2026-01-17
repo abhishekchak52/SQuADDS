@@ -5,7 +5,8 @@ from datetime import datetime
 from dotenv import load_dotenv
 from huggingface_hub import HfApi, get_token, login
 
-from squadds.core.utils import *
+from squadds.core.globals import ENV_FILE_PATH
+from squadds.core.utils import send_email_via_client
 from squadds.database.checker import Checker
 
 load_dotenv(ENV_FILE_PATH)

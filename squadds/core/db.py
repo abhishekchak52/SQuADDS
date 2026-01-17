@@ -6,17 +6,31 @@ import os
 import pprint
 import sys
 import warnings
+from multiprocessing import Pool, cpu_count
 
+import numpy as np
 import pandas as pd
 import requests
 from datasets import get_dataset_config_names, load_dataset
-from huggingface_hub import get_token, login
+from huggingface_hub import HfApi, get_token, login
 from tabulate import tabulate
 from tqdm import tqdm
 
 from squadds.core.design_patterns import SingletonMeta
-from squadds.core.processing import *
-from squadds.core.utils import *
+from squadds.core.processing import merge_dfs, update_ncap_parameters
+from squadds.core.utils import (
+    compute_memory_usage,
+    create_unified_design_options,
+    delete_categorical_columns,
+    delete_HF_cache,
+    delete_object_columns,
+    filter_df_by_conditions,
+    flatten_df_second_level,
+    get_sim_results_keys,
+    optimize_dataframe,
+    process_design_options,
+    view_contributors_from_rst,
+)
 
 # * HANDLE WARNING MESSAGES
 if sys.platform == "darwin":  # Checks if the operating system is macOS

@@ -1,8 +1,9 @@
+import numpy as np
 import pandas as pd
 from pyEPR.calcs import Convert
 
 from squadds import Analyzer
-from squadds.core.utils import *
+from squadds.core.utils import create_unified_design_options, string_to_float
 from squadds.interpolations.interpolator import Interpolator
 
 

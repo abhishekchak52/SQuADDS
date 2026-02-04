@@ -92,10 +92,10 @@ def setMaterialProperties(projectname, designname, solutiontype="Eigenmode"):
     """
 
     aedt = Hfss(
-        projectname=projectname,
-        designname=designname,
+        project=projectname,
+        design=designname,
         solution_type=solutiontype,
-        new_desktop_session=False,
+        new_desktop=False,
         close_on_exit=False,
     )
 

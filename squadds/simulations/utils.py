@@ -102,7 +102,7 @@ def setMaterialProperties(projectname, designname, solutiontype="Eigenmode"):
     ultra_cold_silicon(aedt)
     delete_old_setups(aedt)
 
-    aedt.release_desktop(close_projects=False, close_desktop=False)
+    # aedt.release_desktop(close_projects=False, close_desktop=False)
 
 
 def ultra_cold_silicon(aedt):
